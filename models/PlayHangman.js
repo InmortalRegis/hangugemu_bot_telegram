@@ -1,10 +1,15 @@
 import { removeLetterFromKeyboard } from "./Keyboard";
+import { pickedWord } from "./Program";
 var guessedFoundLetters = [];
 var guessedLetters = [];
 var missedLetters = [];
 
 export const unguessedLetters = () => {
   return [...guessedFoundLetters, ...guessedLetters, ...missedLetters];
+};
+
+export const getGuessedFoundLetters = () => {
+  return guessedFoundLetters;
 };
 
 export const playHangman = () => {
@@ -14,9 +19,42 @@ export const playHangman = () => {
 };
 
 export const play = () => {
-  guessedFoundLetters = [];
+  for (let index = 0; index < pickedWord.length; index++) {
+    guessedFoundLetters[index] = " _ ";
+  }
+
+  for (let index = 0; index < pickedWord.length; index++) {
+    const letter = pickedWord.charAt(index);
+    if (guessedLetters.length > 0) {
+      guessedLetters.forEach((guessedLetter) => {
+        if (letter == guessedLetter.trim().toUpperCase()) {
+          guessedFoundLetters[index] = " " + letter + " ";
+        }
+      });
+    }
+  }
+
+  drawHangMan();
 };
 
+export const drawHangMan = () => {
+  for (let index = 0; index < guessedLetters.length; index++) {
+    const letter = guessedLetters[index];
+    if (!checkLetter(letter)) {
+      missedLetters.push(letter);
+    }
+  }
+};
+
+export const checkLetter = (letter) => {
+  for (let index = 0; index < pickedWord.length; index++) {
+    let splittedLetter = pickedWord.charAt(index).toUpperCase();
+    if (splittedLetter == letter.trim().toUpperCase()) {
+      return true;
+    }
+  }
+  return false;
+};
 /**
  *
  * @param {*} letter

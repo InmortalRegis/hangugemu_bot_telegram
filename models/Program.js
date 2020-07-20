@@ -1,5 +1,5 @@
 import { pickAWord } from "./Words";
-
+export const pickedWord = pickAWord();
 /**
  *
  * @param {*} ctx
@@ -7,7 +7,7 @@ import { pickAWord } from "./Words";
  * escribiendo su representación oculta
  */
 export const playGame = (ctx) => {
-  const pickedWord = pickAWord();
+
   let hiddenWord = "";
   for (let index = 0; index < pickedWord.length; index++) {
     hiddenWord += " _";

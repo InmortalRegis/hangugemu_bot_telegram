@@ -8,23 +8,31 @@ const options = {
 };
 const keyboard = new Keyboard(options);
 
-export const keyboardUnguessed = () => {
+export const keyboardLetters = () => {
   let letters = alphabet.filter(
     (letter) => !unguessedLetters().includes(letter)
   );
-
-  var i,
-    j,
-    temparray,
-    chunk = 9;
-  for (i = 0, j = letters.length; i < j; i += chunk) {
-    temparray = letters.slice(i, i + chunk);
-    keyboard.add(temparray);
-    // do whatever
+  return letters;
+};
+export const keyboardUnguessed = () => {
+  let letters = keyboardLetters();
+  console.log(letters);
+  if (letters) {
+    var i,
+      j,
+      temparray,
+      chunk = 9;
+    for (i = 0, j = letters.length; i < j; i += chunk) {
+      temparray = letters.slice(i, i + chunk);
+      keyboard.add(temparray);
+      // do whatever
+    }
+    return keyboard;
   }
-  return keyboard;
 };
 
 export const removeLetterFromKeyboard = (letter) => {
   keyboard.remove(letter);
 };
+
+export const removeKeyboard = () => {};

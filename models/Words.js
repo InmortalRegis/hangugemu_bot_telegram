@@ -1,4 +1,4 @@
-const words = ["ARCHIVO", "EMPLEADO", "COMPUTADORA"];
+const words = ["CERDITO"];
 
 /**
  * Escoge una palabra aleatoria del listado de palabras disponibles.
