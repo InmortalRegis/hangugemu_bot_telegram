@@ -42,7 +42,6 @@ export const drawHangMan = (ctx) => {
       missedLetters.push(letter);
     }
   }
-  console.log(missedLetters);
 };
 
 export const checkLetter = (letter) => {
