@@ -33,17 +33,16 @@ export const play = () => {
       });
     }
   }
-
-  drawHangMan();
 };
 
-export const drawHangMan = () => {
+export const drawHangMan = (ctx) => {
   for (let index = 0; index < guessedLetters.length; index++) {
     const letter = guessedLetters[index];
     if (!checkLetter(letter)) {
       missedLetters.push(letter);
     }
   }
+  console.log(missedLetters);
 };
 
 export const checkLetter = (letter) => {

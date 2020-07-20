@@ -16,7 +16,6 @@ export const keyboardLetters = () => {
 };
 export const keyboardUnguessed = () => {
   let letters = keyboardLetters();
-  console.log(letters);
   if (letters) {
     var i,
       j,

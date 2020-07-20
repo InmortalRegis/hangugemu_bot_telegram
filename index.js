@@ -5,6 +5,7 @@ import {
   addGuessedLetter,
   play,
   getGuessedFoundLetters,
+  drawHangMan,
 } from "./models/PlayHangman";
 import { keyboardLetters, keyboardUnguessed } from "./models/Keyboard";
 
@@ -19,6 +20,7 @@ bot.hears(keyboardLetters(), (ctx) => {
   const letter = ctx.message.text;
   if (addGuessedLetter(letter)) {
     play();
+    drawHangMan(ctx);
     ctx.reply(getGuessedFoundLetters().join(""));
     ctx.reply("Pick another letter", keyboardUnguessed().draw());
   }
